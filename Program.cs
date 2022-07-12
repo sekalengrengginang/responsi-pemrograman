@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace ProjectPenjualan
 {
     class Program
@@ -81,36 +80,18 @@ namespace ProjectPenjualan
 
         static void TampilPenjualan()
         {
-            int nota = 0;
+            int nota = 1;
             Console.Clear();
          
             // PERINTAH: lengkapi kode untuk menampilkan daftar penjualan yang ada di dalam collection
             Console.WriteLine("Data Penjualan");
             foreach (Penjualan penjualan in daftarPenjualan)
             {
-             
+                Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", nota, penjualan.Nota, penjualan.Tanggal, penjualan.Pelanggan, penjualan.Jenis, 
+                penjualan.JumlahNota);
                 nota++;
-                string jenis;
-                if (penjualan.Jenis == "T")
-                {
-                    jenis = "Tunai";
-                }
-                else if (penjualan.Jenis == "K")
-                {
-                    jenis = "Kredit";
-                }
-                else
-                {
-                    jenis = "Jenis tidak diketahui!";
-                }
-                Console.WriteLine( nota + ". " + penjualan.Nota + ", " + penjualan.Tanggal + ", " + penjualan.Pelanggan + ", " + jenis + ", " + penjualan.JumlahNota);
-            }
-            if (nota < 1)
-            {
-                Console.WriteLine("Data Penjualan Kosong");
             }
 
-            
             Console.WriteLine("\nTekan enter untuk kembali ke menu");
             Console.ReadKey();
         }
