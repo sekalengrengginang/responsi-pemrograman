@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 namespace ProjectPenjualan
 {
     class Program
@@ -32,9 +33,9 @@ namespace ProjectPenjualan
 
                     case 3: // keluar dari program
                         return ;
-                        
+
                     default:
-                        
+
                         break;
                 }
             }
@@ -47,7 +48,7 @@ namespace ProjectPenjualan
             Console.WriteLine("1.Tambah penjualan");
             Console.WriteLine("2.Tampilkan penjualan");
             Console.WriteLine("3.Keluar");
-            
+
 
             // PERINTAH: lengkapi kode untuk menampilkan menu
         }
@@ -58,7 +59,7 @@ namespace ProjectPenjualan
             Penjualan penjualan  = new Penjualan();
             Console.WriteLine("Tambah data penjualan\n");
             Console.WriteLine();
-            
+
             Console.Write("Nota\n");
             penjualan.Nota = Console.ReadLine();
             Console.Write("Tanggal\n");
@@ -71,7 +72,7 @@ namespace ProjectPenjualan
             penjualan.JumlahNota = double.Parse(Console.ReadLine());
 
             daftarPenjualan.Add(penjualan);
-            
+
             // PERINTAH: lengkapi kode untuk menambahkan penjualan ke dalam collection
 
             Console.WriteLine("\nTekan ENTER untuk kembali ke menu");
@@ -80,17 +81,35 @@ namespace ProjectPenjualan
 
         static void TampilPenjualan()
         {
-            int nota = 1;
+            int nota = 0;
             Console.Clear();
-         
+
             // PERINTAH: lengkapi kode untuk menampilkan daftar penjualan yang ada di dalam collection
             Console.WriteLine("Data Penjualan");
             foreach (Penjualan penjualan in daftarPenjualan)
             {
-                Console.WriteLine("{0}. {1}, {2}, {3}, {4}, {5}", nota, penjualan.Nota, penjualan.Tanggal, penjualan.Pelanggan, penjualan.Jenis, 
-                penjualan.JumlahNota);
+
                 nota++;
+                string jenis;
+                if (penjualan.Jenis == "T")
+                {
+                    jenis = "Tunai";
+                }
+                else if (penjualan.Jenis == "K")
+                {
+                    jenis = "Kredit";
+                }
+                else
+                {
+                    jenis = "Jenis tidak diketahui!";
+                }
+                Console.WriteLine( nota + ". " + penjualan.Nota + ", " + penjualan.Tanggal + ", " + penjualan.Pelanggan + ", " + jenis + ", " + penjualan.JumlahNota);
             }
+            if (nota < 1)
+            {
+                Console.WriteLine("Data Penjualan Kosong");
+            }
+
 
             Console.WriteLine("\nTekan enter untuk kembali ke menu");
             Console.ReadKey();
